@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class MP3Client {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Scanner in = new Scanner(System.in);
         Boolean cont = true;
         String choice;
@@ -39,6 +39,7 @@ public class MP3Client {
             switch (choice) {
                 case "1":
                     request = new SongRequest(false);
+                    oos.writeObject(request);
                     break;
                 case "2":
                     System.out.print("Enter the song name: ");
@@ -46,6 +47,7 @@ public class MP3Client {
                     System.out.print("Enter the artist name: ");
                     artist = in.nextLine();
                     request = new SongRequest(true, song, artist);
+                    oos.writeObject(request);
                     break;
                 case "3":
                     cont = false;
